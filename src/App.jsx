@@ -38,7 +38,7 @@ function App() {
 
   return (
     <>
-      <div className="heading">
+      <div className="heading flex justify-center">
         <p className="text-white text-4xl">Random number Generator</p>
 
       </div>
