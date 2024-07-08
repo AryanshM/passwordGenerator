@@ -84,10 +84,10 @@ function App() {
         <p className="m-2 p-2">numbers</p>
         
       </div>
-      <div className=" bg-white text-4xl text-black flex justify-center m-22">
+      <div className="text-4xl text-black flex justify-center m-22">
         
           <input ref={selectText} className="bg-white text-black
-          border-green-500 border-4"type="text" value={password} />
+          border-green-500 border-4" type="text" value={password} />
           
           <button className="bg-blue-900 ml-6 p-2 text-white" 
           onClick={()=>{
