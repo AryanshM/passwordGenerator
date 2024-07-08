@@ -7,7 +7,7 @@ function App() {
   const [numberAllowed, setnumber] = useState(false);
   const [password, setpassword] = useState()
   const selectText = useRef(null)
-  const [copyvisibility, setcopyVisibility] = useState("invisible")
+  const [copyvisibility, setcopyVisibility] = useState(false)
   // password generator function
   let passwordGenerator = useCallback(() => {
     console.log("password generator called")
@@ -27,6 +27,7 @@ function App() {
       console.log(pass)
     }
 
+
     setpassword(pass)
 
     console.log(`pass word set to ${pass}`)
@@ -34,7 +35,11 @@ function App() {
   }, [length, specialcharAllowed, numberAllowed]);
 
   useEffect(()=>{
-    passwordGenerator()
+    passwordGenerator(false)
+  }, [length, numberAllowed, specialcharAllowed])
+
+  useEffect(()=>{
+    setcopyVisibility()
   }, [length, numberAllowed, specialcharAllowed])
 
   return (
@@ -95,7 +100,7 @@ function App() {
           
       </div>
       <div className="flex justify-center">
-        <p className={`text-yellow-400 p-2 m-2 text-4xl italic ${copyvisibility}`}>copied</p>
+        <p className={`text-yellow-400 p-2 m-2 text-4xl italic ${copyvisibility? "visible" : "invisible"}`}>copied</p>
       </div>
     </>
   );
