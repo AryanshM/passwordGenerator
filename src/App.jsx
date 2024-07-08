@@ -45,7 +45,7 @@ function App() {
   return (
     <>
       <div className="mt-4 pt-4  heading flex justify-center">
-        <p className="text-white text-4xl">Random number Generator</p>
+        <p className="text-white text-4xl">Random Password Generator</p>
 
       </div>
       {/* length */}
