@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import "./App.css";
 
 function App() {
@@ -6,7 +6,8 @@ function App() {
   const [specialcharAllowed, setspecialchar] = useState(false);
   const [numberAllowed, setnumber] = useState(false);
   const [password, setpassword] = useState()
-
+  const selectText = useRef(null)
+  const [copyvisibility, setcopyVisibility] = useState("invisible")
   // password generator function
   let passwordGenerator = useCallback(() => {
     console.log("password generator called")
@@ -79,17 +80,22 @@ function App() {
         
       </div>
       <div className=" bg-white text-4xl text-black flex justify-center m-22">
-          <p className="">
-          {password}
-          </p>
+        
+          <input ref={selectText} className="bg-white text-black
+          border-green-500 border-4"type="text" value={password} />
+          
           <button className="bg-blue-900 ml-6 p-2 text-white" 
           onClick={()=>{
             navigator.clipboard.writeText(password)
+            selectText.current.select()
+            setcopyVisibility("visible")
             
           }}
           >copy</button>
-          <input className="bg-white text-black
-          border-green-500 border-4"type="text" value={password} />
+          
+      </div>
+      <div className="flex justify-center">
+        <p className={`text-yellow-400 p-2 m-2 text-4xl italic ${copyvisibility}`}>copied</p>
       </div>
     </>
   );
